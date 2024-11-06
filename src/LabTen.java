@@ -73,25 +73,29 @@ public static void playGame(String[] words) {
 //Fill the guessed word with stars
     char[] letters = randomWord.toCharArray();
     char[]hiddenArr = new char[letters.length];
-
+//Print the guessed word (initially all stars)
     Arrays.fill(hiddenArr, '*');
 //Start a scanner for the users input
     Scanner input = new Scanner(System.in);
     System.out.print("Enter a letter: ");
 
-
+//Get the users guessCount
 //Create a variable to store the number of guesses
     int guessCount =0;
 //Create a loop to play the game
 while(guessCount <6 && hasStars(hiddenArr)){
 
     System.out.println("Current word: " + Arrays.toString(hiddenArr)+"\n Guess a letter: ");
-
+//Prompt the user to guessCount a letter
     char userGuess = input.next().charAt(0);
+    //Create a boolean to check if the guessCount is correct
     boolean found = false;
+    //Check if the user has guessed the word or run out of guesses
     for(int i =0; i< letters.length; i++){
         if(userGuess == letters[i]){
-            hiddenArr[i]= userGuess;//reveals letter
+            //Loop through the word to check if the guessCount is correct
+            hiddenArr[i]= userGuess;//reveals letter //If the guessCount is correct, reveal the letter
+            //Set correctGuess to true
             found = true;
         }
     }
@@ -99,34 +103,37 @@ while(guessCount <6 && hasStars(hiddenArr)){
             System.out.println("Good guess!");
 
         }else{
+            //If the guessCount is incorrect, increment the number of guesses
             guessCount++;
             System.out.print("The letter " + userGuess +" is not in this word\n");
         }
 
         if(Arrays.equals(hiddenArr, letters)){
+            //If the user has guessed the word, print a message
             System.out.println("Congratulations you have guessed the word " + randomWord);
             return;
         }
 
     }
+//If the user has run out of guesses, print a message
     System.out.println("Hangman! Game over! The word is "+randomWord);
 }
-//Print the guessed word (initially all stars)
-
-//Prompt the user to guessCount a letter
 
 
-//Get the users guessCount
 
-//Create a boolean to check if the guessCount is correct
 
-//Loop through the word to check if the guessCount is correct
-//If the guessCount is correct, reveal the letter
-//Set correctGuess to true
-//If the guessCount is incorrect, increment the number of guesses
-//Check if the user has guessed the word or run out of guesses
-//If the user has guessed the word, print a message
-//If the user has run out of guesses, print a message
+
+
+
+
+
+
+
+
+
+
+
+
 public static boolean hasStars(char[] array) {
     for (int i = 0; i < array.length; i++) {
         if (array[i] == '*') {
