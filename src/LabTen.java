@@ -14,6 +14,19 @@ public class LabTen {
         String[] words = {"apple", "banana", "cherry", "date", "elderberry"};
         //Call the playGame method
         playGame(words);
+
+        System.out.print("3.-------------\n");
+        int[] numbers = {1,2,3,4,5,6,7,10,11};
+        System.out.print(Arrays.toString(copyArr(numbers)));
+        System.out.print("\n4.----------------\n");
+        double[]grades={98.6,78.2,56.9};
+        double exam = 88.8;
+        System.out.print(Arrays.toString(newGrades(grades,exam)));
+
+        System.out.print("\n5.-----------------\n");
+    int[] a={56,9,17,6,2,0,1,199,256,94};
+    evenOdd(a);
+
     }
     public static String determineWinner(int player1, int player2) {
         String[] choices={"rock","paper","scissors"};
@@ -31,7 +44,7 @@ public class LabTen {
     }
     public static int getPlayerChoice(String player) {
         Scanner input = new Scanner(System.in);
-        System.out.print(player+ ", enter your choice (0 = rock, 1 = paper, 2 = scissors): ");
+        System.out.print(STR."\{player}, enter your choice (0 = rock, 1 = paper, 2 = scissors): ");
         return input.nextInt();
     }
 
@@ -47,7 +60,7 @@ public class LabTen {
             player2Wins++;
             wins[1]=player2Wins;
         }
-        System.out.println("\nPlayer 1 Wins: "+player1Wins+ "\nPlayer 2 Wins: "+player2Wins);
+        System.out.println(STR."\nPlayer 1 Wins: \{player1Wins} \nPlayer 2 Wins: \{player2Wins}");
     }
 
 
@@ -122,6 +135,53 @@ public static boolean hasStars(char[] array) {
     }
     return false;
 }
+//Question 3
+    public static int[] copyArr(int[] nums){
+       return Arrays.copyOf(nums, nums.length);
+
+
+    }
+//Question 4
+    public static double[] newGrades(double[] nums, double num){
+        double[]newGrades = Arrays.copyOf(nums,nums.length +1);
+
+        newGrades[nums.length]=num;
+    return newGrades;
+    }
+//    Question 5
+    public static void evenOdd(int[] nums){
+        int[] even= {};
+        int[] odd = {};
+        int evenCount = 0;
+        int oddCount = 0;
+        for(int num: nums){
+            if(num %2 ==0){
+                evenCount++;
+
+
+            } else {
+                oddCount++;
+
+            }
+        }
+
+        even=new int[evenCount];
+        odd =new int[oddCount];
+        int evenIndex = 0;
+        int oddIndex = 0;
+        for(int num: nums){
+            if(num % 2==0){
+                even[evenIndex++]= num;
+            }
+            else{
+                odd[oddIndex++]=num;
+            }
+        }
+System.out.print(STR."The even array is \{Arrays.toString(even)}\nThe odd array is \{Arrays.toString(odd)}");
+
+
+    }
+
 
 }
 
